@@ -193,7 +193,7 @@ body {
 }
 
 .hero__cta {
-  background: var(--yellow);
+  background: var(--cream);
   color: var(--deep-red);
   border: none;
   border-radius: 999px;
@@ -558,7 +558,7 @@ section.catalog {
   width: 60px;
   height: 60px;
   border-radius: 50%;
-  background: var(--yellow);
+  background: var(--cream);
   color: var(--deep-red);
   display: grid;
   place-items: center;
