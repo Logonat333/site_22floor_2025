@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>22 Floor — свечи</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Urbanist:wght@400;500;600&family=Pacifico&display=swap"
+    rel="stylesheet"
+  />
+  <link rel="stylesheet" href="src/style.css" />
+</head>
+<body>
+  <div class="page">
+    <header class="top-bar">
+      <div class="top-bar__brand">
+        <span>22 Floor</span>
+      </div>
+      <nav class="top-bar__nav">
+        <a href="#hero">Главная</a>
+        <a href="#catalog">Каталог</a>
+        <a href="#features">О нас</a>
+      </nav>
+    </header>
+
+    <section class="hero" id="hero">
+      <div class="hero__backdrop" aria-hidden="true"></div>
+      <div class="hero__content">
+        <p class="hero__eyebrow">Шаг к уюту</p>
+        <h1>Готовы создать уют?</h1>
+        <p class="hero__lede">
+          Выберите свечи и оформите заказ через Telegram — это быстро, красиво и удобно.
+        </p>
+        <div class="hero__cta-row">
+          <button class="hero__cta" id="hero-cta">Перейти в каталог</button>
+          <span class="hero__hint">Свежие коллекции рождественского сезона</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="catalog" id="catalog">
+      <div class="catalog__inner">
+        <div class="products">
+          <div class="section__header">
+            <div>
+              <p class="section__tag">Коллекция</p>
+              <h2>Наши свечи</h2>
+            </div>
+            <p class="section__subtitle">Каждая свеча создана с любовью и вниманием к деталям.</p>
+          </div>
+          <div class="products__grid" id="product-list"></div>
+        </div>
+        <aside class="cart-panel">
+          <section class="cart" aria-label="Корзина">
+            <div class="cart__header">
+              <h3>Ваша корзина</h3>
+              <p class="cart__summary" id="cart-summary">Нет товаров</p>
+            </div>
+            <div class="cart__list" id="cart-items"></div>
+            <button class="cart__checkout" id="cart-checkout">Оформить через Telegram</button>
+          </section>
+        </aside>
+      </div>
+    </section>
+
+    <section class="features" id="features">
+      <div class="features__grid">
+        <article class="feature">
+          <div class="feature__icon">🤲</div>
+          <h4>Ручная работа</h4>
+          <p>Каждая свеча создаётся вручную с особым вниманием.</p>
+        </article>
+        <article class="feature">
+          <div class="feature__icon">🌿</div>
+          <h4>Натуральные материалы</h4>
+          <p>Используем только качественный воск и безопасные красители.</p>
+        </article>
+        <article class="feature">
+          <div class="feature__icon">🎁</div>
+          <h4>Идеальный подарок</h4>
+          <p>Создайте праздничное настроение для себя и близких.</p>
+        </article>
+      </div>
+    </section>
+
+    <footer class="site-footer">
+      <div class="footer__inner">
+        <div class="footer__bar">
+          <a class="footer__brand-link" href="https://www.rusprofile.ru/ip/323774600268536" target="_blank" rel="noopener">
+            ИП Тимофеева Ксения Евгеньевна
+          </a>
+          <div class="footer__pill">
+            <span>Дата регистрации</span>
+            <strong>25.04.2023</strong>
+          </div>
+          <a class="footer__pill" href="https://www.rusprofile.ru/ip/323774600268536" target="_blank" rel="noopener">
+            <span>ИНН</span>
+            <strong>773716366975</strong>
+          </a>
+          <a class="footer__pill" href="tel:+79637682268">
+            <span>Телефон</span>
+            <strong>+7&nbsp;963&nbsp;768‑22‑68</strong>
+          </a>
+          <a class="footer__pill" href="https://t.me/ksenia_timofeevaa" target="_blank" rel="noopener">
+            <span>Telegram</span>
+            <strong>@ksenia_timofeevaa</strong>
+          </a>
+        </div>
+      </div>
+    </footer>
+  </div>
+  <script src="src/script.js"></script>
+</body>
+</html>
