@@ -72,6 +72,7 @@ const cartCheckoutBtn = document.getElementById('cart-checkout');
 const heroCta = document.getElementById('hero-cta');
 const catalogSection = document.getElementById('catalog');
 const TELEGRAM_LINK = 'https://t.me/ksenia_timofeevaa';
+const heroEmbers = document.getElementById('hero-embers');
 
 function formatPrice(value) {
   return `${value.toLocaleString('ru-RU')} ₽`;
@@ -191,3 +192,30 @@ heroCta?.addEventListener('click', scrollToCatalog);
 
 renderProducts();
 updateCart();
+initHeroEmbers();
+
+function initHeroEmbers() {
+  if (!heroEmbers) return;
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+  if (prefersReducedMotion.matches) return;
+
+  const spawnEmber = () => {
+    const ember = document.createElement('span');
+    ember.classList.add('hero__ember');
+    const size = 2 + Math.random() * 4;
+    ember.style.width = `${size}px`;
+    ember.style.height = `${size}px`;
+    ember.style.left = `${Math.random() * 100}%`;
+    ember.style.animationDuration = `${4 + Math.random() * 4}s`;
+    ember.style.opacity = (0.3 + Math.random() * 0.5).toFixed(2);
+    ember.style.setProperty('--ember-shift', `${(Math.random() - 0.5) * 40}px`);
+    heroEmbers.appendChild(ember);
+    setTimeout(() => ember.remove(), 9000);
+  };
+
+  for (let i = 0; i < 14; i += 1) {
+    setTimeout(spawnEmber, i * 180);
+  }
+
+  setInterval(spawnEmber, 220);
+}

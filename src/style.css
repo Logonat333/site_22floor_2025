@@ -106,6 +106,7 @@ body {
   background: linear-gradient(180deg, #a80d17 0%, #70040a 65%, #460000 100%);
   padding: 80px 24px;
   margin-top: 0;
+  overflow: hidden;
 }
 
 .hero__backdrop {
@@ -118,6 +119,7 @@ body {
   opacity: 1;
   filter: brightness(0.8) blur(6px);
   transform: scale(1.03);
+  z-index: 0;
 }
 
 .hero__content {
@@ -125,8 +127,43 @@ body {
   text-align: center;
   color: #fff;
   max-width: 640px;
-  z-index: 1;
+  z-index: 2;
   animation: fadeSlideUp 0.9s ease 0.1s both;
+}
+
+.hero__embers {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 1;
+  mix-blend-mode: screen;
+}
+
+.hero__ember {
+  position: absolute;
+  bottom: -10px;
+  width: 4px;
+  height: 4px;
+  background: radial-gradient(circle, rgba(255, 184, 94, 0.9), rgba(255, 80, 0, 0));
+  border-radius: 50%;
+  box-shadow: 0 0 20px rgba(255, 178, 75, 0.4);
+  animation: emberFloat 6s linear forwards;
+  opacity: 0.8;
+}
+
+@keyframes emberFloat {
+  0% {
+    transform: translate3d(0, 0, 0) scale(1);
+    opacity: 0.9;
+  }
+  60% {
+    opacity: 0.6;
+  }
+  100% {
+    transform: translate3d(var(--ember-shift, 10px), -120vh, 0) scale(0.4);
+    opacity: 0;
+  }
 }
 
 .hero__eyebrow {
