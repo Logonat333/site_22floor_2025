@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>22 Floor — реферальная программа</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="icon" type="image/png" href="src/22Floor.png" />
+  <link rel="apple-touch-icon" href="src/22Floor.png" />
+  <meta property="og:image" content="src/22Floor.png" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Urbanist:wght@400;500;600&family=Pacifico&display=swap"
+    rel="stylesheet"
+  />
+  <link rel="stylesheet" href="src/style.css" />
+</head>
+<body class="referral-page">
+  <div class="page">
+    <header class="top-bar">
+      <div class="top-bar__brand">
+        <span>22 Floor</span>
+      </div>
+      <nav class="top-bar__nav">
+        <a href="index.html#hero">Главная</a>
+        <a href="index.html#catalog">Каталог</a>
+        <a href="referral.html">Реферальная программа</a>
+      </nav>
+    </header>
+
+    <main class="referral">
+      <section class="referral-hero" id="referral">
+        <div class="referral-hero__content">
+          <p class="referral-hero__eyebrow">30% скидка себе и друзьям</p>
+          <h1>Реферальная программа</h1>
+          <p>
+            Пригласите друзей до оформления заказа и получите 30% скидку каждый. Поделитесь кодом, а мы позаботимся
+            об остальном.
+          </p>
+          <div class="referral-hero__cta-row">
+            <a class="referral-hero__cta" href="#referral-code">Получить код</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="referral-steps">
+        <h2>Как это работает?</h2>
+        <div class="referral-steps__grid">
+          <article class="referral-steps__card">
+            <div class="referral-steps__icon">🔗</div>
+            <h3>1. Поделись кодом</h3>
+            <p>Отправь свой код другу в Telegram или любом мессенджере до оформления заказа.</p>
+          </article>
+          <article class="referral-steps__card">
+            <div class="referral-steps__icon">🛒</div>
+            <h3>2. Друг делает заказ</h3>
+            <p>При оформлении он вводит твою ссылку или код и получает скидку 30%.</p>
+          </article>
+          <article class="referral-steps__card">
+            <div class="referral-steps__icon">🎉</div>
+            <h3>3. Получаешь скидку</h3>
+            <p>Ты получаешь такую же скидку 30% на свой следующий заказ. Все довольны!</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="referral-code" id="referral-code">
+        <div class="referral-code__card">
+          <p class="referral-code__label">Твой реферальный код</p>
+          <div class="referral-code__value">
+            <span id="referral-code-value">22FLOOR2025</span>
+            <button type="button" id="referral-copy">Копировать</button>
+          </div>
+          <button class="referral-code__share" type="button" id="referral-share">Поделиться в Telegram</button>
+          <p class="referral-code__hint">Поделись до оформления заказа и получи 30% скидку после подтверждения.</p>
+          <p class="referral-code__status" id="referral-code-status" aria-live="polite"></p>
+        </div>
+      </section>
+
+      <section class="referral-apply">
+        <div class="referral-apply__card">
+          <h2>Есть реферальный код?</h2>
+          <p>Введи код друга при заказе и получи скидку 30% на любой набор свечей.</p>
+          <form class="referral-apply__form" id="referral-form">
+            <label class="sr-only" for="referral-input">Введите реферальный код</label>
+            <input id="referral-input" type="text" placeholder="Например: 22FLOORABC123" maxlength="18" required />
+            <button type="submit">Применить</button>
+          </form>
+          <p class="referral-apply__status" id="referral-apply-status" aria-live="polite"></p>
+        </div>
+      </section>
+
+      <section class="referral-benefits">
+        <h2>Преимущества программы</h2>
+        <div class="referral-benefits__grid">
+          <article class="referral-benefits__item">
+            <div class="referral-benefits__icon">∞</div>
+            <h3>Неограниченно</h3>
+            <p>Приглашай сколько угодно друзей и получай скидку за каждого.</p>
+          </article>
+          <article class="referral-benefits__item">
+            <div class="referral-benefits__icon">⏱</div>
+            <h3>Без срока</h3>
+            <p>Код действует всегда — твой бонус можно использовать в любое время.</p>
+          </article>
+          <article class="referral-benefits__item">
+            <div class="referral-benefits__icon">🤝</div>
+            <h3>Выгодно всем</h3>
+            <p>И ты, и твой друг получаете одинаковую скидку 30%.</p>
+          </article>
+          <article class="referral-benefits__item">
+            <div class="referral-benefits__icon">⚡</div>
+            <h3>Быстро</h3>
+            <p>Никаких сложностей — отправь код и наслаждайся выгодой.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="referral-cta">
+        <h2>Начни экономить прямо сейчас!</h2>
+        <p>Поделись своим кодом с друзьями и наслаждайтесь скидками вместе.</p>
+        <a class="referral-cta__button" href="index.html#catalog">Перейти в каталог</a>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer__inner">
+        <div class="footer__grid">
+          <div class="footer__col">
+            <span class="footer__logo">22 Floor</span>
+            <p>Декоративные свечи ручной работы для создания уютной атмосферы.</p>
+          </div>
+          <div class="footer__col">
+            <h4>Контакты</h4>
+            <p><span class="footer__icon">👤</span> ИП Тимофеева Ксения Евгеньевна</p>
+            <p><span class="footer__icon">📞</span> <a href="tel:+79637682268">+7 963 768‑22‑68</a></p>
+            <p><span class="footer__icon">✈️</span> <a href="https://t.me/ksenia_timofeevaa" target="_blank" rel="noopener">@ksenia_timofeevaa</a></p>
+          </div>
+          <div class="footer__col">
+            <h4>Реквизиты</h4>
+            <p>Дата регистрации<br /><strong>25.04.2023</strong></p>
+            <p>ИНН<br /><strong>773716366975</strong></p>
+          </div>
+          <div class="footer__col">
+            <h4>Навигация</h4>
+            <p><a href="index.html#hero">Главная</a></p>
+            <p><a href="index.html#catalog">Каталог</a></p>
+            <p><a href="referral.html">Реферальная программа</a></p>
+          </div>
+        </div>
+        <div class="footer__bottom">
+          <p>© 2024 22 Floor. Все права защищены.</p>
+          <p>Website Builder</p>
+        </div>
+      </div>
+    </footer>
+  </div>
+  <script src="src/referral.js"></script>
+</body>
+</html>
