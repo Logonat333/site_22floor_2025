@@ -6,7 +6,9 @@
   <title>22 Floor — свечи</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link rel="icon" type="image/svg+xml" href="src/favicon.svg" />
+  <link rel="icon" type="image/png" href="src/22Floor.png" />
+  <link rel="apple-touch-icon" href="src/22Floor.png" />
+  <meta property="og:image" content="src/22Floor.png" />
   <link
     href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Urbanist:wght@400;500;600&family=Pacifico&display=swap"
     rel="stylesheet"
@@ -54,7 +56,7 @@
           <div class="products__grid" id="product-list"></div>
         </div>
         <aside class="cart-panel">
-          <section class="cart" aria-label="Корзина">
+          <section class="cart" id="cart-section" aria-label="Корзина">
             <div class="cart__header">
               <h3>Ваша корзина</h3>
               <p class="cart__summary" id="cart-summary">Нет товаров</p>
@@ -67,7 +69,7 @@
     </section>
 
     <section class="features" id="features">
-      <div class="features__grid">
+      <div class="features__grid" id="features-track">
         <article class="feature">
           <div class="feature__icon">🤲</div>
           <h4>Ручная работа</h4>
@@ -83,6 +85,14 @@
           <h4>Идеальный подарок</h4>
           <p>Создайте праздничное настроение для себя и близких.</p>
         </article>
+      </div>
+      <div class="features__controls">
+        <button class="features__arrow" type="button" aria-label="Предыдущая особенность" data-features-direction="prev">
+          ‹
+        </button>
+        <button class="features__arrow" type="button" aria-label="Следующая особенность" data-features-direction="next">
+          ›
+        </button>
       </div>
     </section>
 
@@ -112,6 +122,10 @@
       </div>
     </footer>
   </div>
+  <button class="floating-cart" id="floating-cart" type="button" aria-label="Открыть корзину">
+    <img class="floating-cart__icon" src="src/sale.png" alt="" aria-hidden="true" />
+    <span class="floating-cart__count" id="floating-cart-count">0</span>
+  </button>
   <script src="src/script.js"></script>
 </body>
 </html>

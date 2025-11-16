@@ -69,8 +69,13 @@ const productListEl = document.getElementById('product-list');
 const cartItemsEl = document.getElementById('cart-items');
 const cartSummaryEl = document.getElementById('cart-summary');
 const cartCheckoutBtn = document.getElementById('cart-checkout');
+const cartSectionEl = document.getElementById('cart-section');
+const floatingCartButton = document.getElementById('floating-cart');
+const floatingCartCount = document.getElementById('floating-cart-count');
 const heroCta = document.getElementById('hero-cta');
 const catalogSection = document.getElementById('catalog');
+const featuresTrack = document.getElementById('features-track');
+const featureArrowButtons = document.querySelectorAll('[data-features-direction]');
 const TELEGRAM_LINK = 'https://t.me/ksenia_timofeevaa';
 const heroEmbers = document.getElementById('hero-embers');
 
@@ -104,6 +109,7 @@ function updateCart() {
     cartSummaryEl.textContent = 'Соберите набор';
     cartCheckoutBtn.disabled = true;
     cartCheckoutBtn.classList.remove('cart__checkout--active');
+    updateFloatingCart(0);
     return;
   }
 
@@ -134,6 +140,7 @@ function updateCart() {
     .join('');
 
   cartSummaryEl.textContent = `${totalItems} товара · ${formatPrice(totalPrice)}`;
+  updateFloatingCart(totalItems);
 }
 
 function changeItem(id, delta) {
@@ -173,6 +180,26 @@ function scrollToCatalog() {
   catalogSection?.scrollIntoView({ behavior: 'smooth' });
 }
 
+function scrollToCart() {
+  cartSectionEl?.scrollIntoView({ behavior: 'smooth' });
+}
+
+function updateFloatingCart(totalItems) {
+  if (!floatingCartCount) return;
+  floatingCartCount.textContent = totalItems;
+  floatingCartCount.classList.toggle('is-visible', totalItems > 0);
+}
+
+function scrollFeatures(direction) {
+  if (!featuresTrack) return;
+  const featureCard = featuresTrack.querySelector('.feature');
+  const gap = 16;
+  const cardWidth = featureCard ? featureCard.offsetWidth : featuresTrack.clientWidth;
+  const scrollAmount = cardWidth + gap;
+  const offset = direction === 'next' ? scrollAmount : -scrollAmount;
+  featuresTrack.scrollBy({ left: offset, behavior: 'smooth' });
+}
+
 productListEl.addEventListener('click', (event) => {
   const target = event.target;
   if (target.matches('[data-add]')) {
@@ -189,6 +216,12 @@ cartItemsEl.addEventListener('click', (event) => {
 
 cartCheckoutBtn.addEventListener('click', openTelegram);
 heroCta?.addEventListener('click', scrollToCatalog);
+floatingCartButton?.addEventListener('click', scrollToCart);
+featureArrowButtons.forEach((button) => {
+  button.addEventListener('click', () => {
+    scrollFeatures(button.dataset.featuresDirection);
+  });
+});
 
 renderProducts();
 updateCart();
