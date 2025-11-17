@@ -76,6 +76,8 @@ const heroCta = document.getElementById('hero-cta');
 const catalogSection = document.getElementById('catalog');
 const featuresTrack = document.getElementById('features-track');
 const featureArrowButtons = document.querySelectorAll('[data-features-direction]');
+const mobileCartButton = document.getElementById('mobile-cart-button');
+const mobileCartCount = document.getElementById('mobile-cart-count');
 const TELEGRAM_LINK = 'https://t.me/ksenia_timofeevaa';
 const heroEmbers = document.getElementById('hero-embers');
 
@@ -185,9 +187,14 @@ function scrollToCart() {
 }
 
 function updateFloatingCart(totalItems) {
-  if (!floatingCartCount) return;
-  floatingCartCount.textContent = totalItems;
-  floatingCartCount.classList.toggle('is-visible', totalItems > 0);
+  if (floatingCartCount) {
+    floatingCartCount.textContent = totalItems;
+    floatingCartCount.classList.toggle('is-visible', totalItems > 0);
+  }
+  if (mobileCartCount) {
+    mobileCartCount.textContent = totalItems;
+    mobileCartCount.classList.toggle('is-visible', totalItems > 0);
+  }
 }
 
 function scrollFeatures(direction) {
@@ -217,6 +224,7 @@ cartItemsEl.addEventListener('click', (event) => {
 cartCheckoutBtn.addEventListener('click', openTelegram);
 heroCta?.addEventListener('click', scrollToCatalog);
 floatingCartButton?.addEventListener('click', scrollToCart);
+mobileCartButton?.addEventListener('click', scrollToCart);
 featureArrowButtons.forEach((button) => {
   button.addEventListener('click', () => {
     scrollFeatures(button.dataset.featuresDirection);

@@ -2,3 +2,4 @@ User-agent: *
 Allow: /
 
 Sitemap: https://22floor.ru/sitemap.xml
+Host: https://22floor.ru

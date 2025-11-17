@@ -26,6 +26,10 @@
         <a href="index.html#catalog">Каталог</a>
         <a href="referral.html">Реферальная программа</a>
       </nav>
+      <button class="top-bar__cart-button" id="mobile-cart-button" type="button" aria-label="Открыть корзину">
+        <span class="top-bar__cart-icon" aria-hidden="true"></span>
+        <span class="top-bar__cart-count" id="mobile-cart-count">0</span>
+      </button>
     </header>
 
     <main class="referral">
@@ -149,12 +153,29 @@
           </div>
         </div>
         <div class="footer__bottom">
-          <p>© 2024 22 Floor. Все права защищены.</p>
-          <p>Website Builder</p>
+          <p>© 2025 22 Floor. Все права защищены.</p>
         </div>
       </div>
     </footer>
   </div>
+  <nav class="mobile-nav" aria-label="Навигация по сайту">
+    <a class="mobile-nav__item" href="index.html#hero">
+      <span class="mobile-nav__icon">🏠</span>
+      <span>Главная</span>
+    </a>
+    <a class="mobile-nav__item" href="index.html#catalog">
+      <span class="mobile-nav__icon">🔥</span>
+      <span>Каталог</span>
+    </a>
+    <a class="mobile-nav__item" href="referral.html">
+      <span class="mobile-nav__icon">🎁</span>
+      <span>Скидка 30%</span>
+    </a>
+  </nav>
+  <button class="floating-cart" id="floating-cart" type="button" aria-label="Открыть корзину">
+    <img class="floating-cart__icon" src="src/sale.png" alt="" aria-hidden="true" />
+    <span class="floating-cart__count" id="floating-cart-count">0</span>
+  </button>
   <script src="src/referral.js"></script>
 </body>
 </html>
