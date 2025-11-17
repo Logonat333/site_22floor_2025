@@ -16,13 +16,13 @@
   <link rel="stylesheet" href="src/style.css" />
 </head>
 <body>
-  <div class="page">
+  <div class="page" id="top">
     <header class="top-bar">
       <div class="top-bar__brand">
-        <span>22 Floor</span>
+        <a href="#top">22 Floor</a>
       </div>
       <nav class="top-bar__nav">
-        <a href="#hero">Главная</a>
+        <a href="#top">Главная</a>
         <a href="#catalog">Каталог</a>
         <a href="referral.html">Скидка 30%</a>
       </nav>
@@ -120,7 +120,7 @@
           </div>
           <div class="footer__col">
             <h4>Навигация</h4>
-            <p><a href="#hero">Главная</a></p>
+            <p><a href="#top">Главная</a></p>
             <p><a href="#catalog">Каталог</a></p>
             <p><a href="referral.html">Реферальная программа</a></p>
           </div>
@@ -132,7 +132,7 @@
     </footer>
   </div>
   <nav class="mobile-nav" aria-label="Навигация по сайту">
-    <a class="mobile-nav__item" href="#hero">
+    <a class="mobile-nav__item" href="#top">
       <span class="mobile-nav__icon">🏠</span>
       <span>Главная</span>
     </a>
@@ -145,10 +145,22 @@
       <span>Скидка 30%</span>
     </a>
   </nav>
-  <button class="floating-cart" id="floating-cart" type="button" aria-label="Открыть корзину">
-    <img class="floating-cart__icon" src="src/sale.png" alt="" aria-hidden="true" />
-    <span class="floating-cart__count" id="floating-cart-count">0</span>
-  </button>
+  <div class="product-modal" id="product-modal" aria-hidden="true">
+    <div class="product-modal__overlay" data-modal-close></div>
+    <div class="product-modal__dialog" role="dialog" aria-modal="true" aria-labelledby="product-modal-title">
+      <button class="product-modal__close" type="button" aria-label="Закрыть" data-modal-close>×</button>
+      <div class="product-modal__media">
+        <img id="product-modal-image" src="" alt="" />
+      </div>
+      <div class="product-modal__body">
+        <p class="product-modal__tag" id="product-modal-price"></p>
+        <h3 class="product-modal__title" id="product-modal-title"></h3>
+        <p class="product-modal__desc" id="product-modal-desc"></p>
+        <p class="product-modal__details" id="product-modal-details"></p>
+        <button class="product-modal__cta" type="button" id="product-modal-add">Добавить в корзину</button>
+      </div>
+    </div>
+  </div>
   <script src="src/script.js"></script>
 </body>
 </html>

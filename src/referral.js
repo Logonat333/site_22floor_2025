@@ -1,12 +1,22 @@
+if ('scrollRestoration' in window.history) {
+  window.history.scrollRestoration = 'manual';
+}
+
+window.addEventListener('load', () => {
+  window.scrollTo({ top: 0, left: 0, behavior: 'auto' });
+});
+
 const referralCodeEl = document.getElementById('referral-code-value');
 const referralCopyBtn = document.getElementById('referral-copy');
 const referralShareBtn = document.getElementById('referral-share');
 const referralCodeStatus = document.getElementById('referral-code-status');
-const referralForm = document.getElementById('referral-form');
-const referralInput = document.getElementById('referral-input');
-const referralApplyStatus = document.getElementById('referral-apply-status');
+const floatingCartButton = document.getElementById('floating-cart');
+const floatingCartCount = document.getElementById('floating-cart-count');
+const mobileCartButton = document.getElementById('mobile-cart-button');
+const mobileCartCount = document.getElementById('mobile-cart-count');
 
 const REF_BASE = '22FLOOR';
+const CART_STORAGE_KEY = 'twentyTwoFloorCart';
 
 function generateReferralCode() {
   const suffix = Math.random().toString(36).substring(2, 8).toUpperCase();
@@ -39,24 +49,45 @@ referralShareBtn?.addEventListener('click', () => {
   window.open(`https://t.me/share/url?url=${url}&text=${text}`, '_blank');
 });
 
-referralForm?.addEventListener('submit', (event) => {
-  event.preventDefault();
-  const value = referralInput.value.trim().toUpperCase();
-
-  if (!value) {
-    referralApplyStatus.textContent = 'Введите код, чтобы получить скидку.';
-    referralApplyStatus.style.color = '#8a040f';
-    return;
+function readCartFromStorage() {
+  if (typeof window === 'undefined' || !('localStorage' in window)) return 0;
+  try {
+    const stored = window.localStorage.getItem(CART_STORAGE_KEY);
+    if (!stored) return 0;
+    const parsed = JSON.parse(stored);
+    if (!Array.isArray(parsed)) return 0;
+    return parsed.reduce((sum, item) => {
+      const count = Number(item?.count);
+      return Number.isFinite(count) && count > 0 ? sum + count : sum;
+    }, 0);
+  } catch (error) {
+    console.warn('Не удалось прочитать корзину', error);
+    return 0;
   }
+}
 
-  const isValid = value.startsWith(REF_BASE) && value.length >= 10;
-
-  if (isValid) {
-    referralApplyStatus.textContent = `Код ${value} активирован! Скидка 30% будет применена к заказу.`;
-    referralApplyStatus.style.color = '#1a8a3b';
-    referralInput.value = '';
-  } else {
-    referralApplyStatus.textContent = 'Пожалуйста, введите корректный код (например, 22FLOORABC123).';
-    referralApplyStatus.style.color = '#8a040f';
+function updateCartBadges(totalItems) {
+  if (floatingCartCount) {
+    floatingCartCount.textContent = totalItems;
+    floatingCartCount.classList.toggle('is-visible', totalItems > 0);
   }
+  if (mobileCartCount) {
+    mobileCartCount.textContent = totalItems;
+    mobileCartCount.classList.toggle('is-visible', totalItems > 0);
+  }
+}
+
+function syncCartCount() {
+  const totalItems = readCartFromStorage();
+  updateCartBadges(totalItems);
+}
+
+floatingCartButton?.addEventListener('click', () => {
+  window.location.href = 'index.html#cart-section';
 });
+
+mobileCartButton?.addEventListener('click', () => {
+  window.location.href = 'index.html#cart-section';
+});
+
+syncCartCount();

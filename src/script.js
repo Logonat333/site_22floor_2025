@@ -3,6 +3,7 @@ const PRODUCTS = [
     id: 'bear',
     name: 'Свечка Мишка',
     desc: 'Очаровательная свеча в форме медвежонка',
+    details: 'Матовое перламутровое покрытие отражает огонь мягким свечением. Каждая свечка отливается вручную, поэтому у каждого медведя свой характер.',
     price: 1580,
     image: './foto/Свечка Мишка.jpeg'
   },
@@ -10,6 +11,7 @@ const PRODUCTS = [
     id: 'pinecone',
     name: 'Свечка шишка',
     desc: 'Асимметричная шишка с матовой текстурой',
+    details: 'Сложная форма и глубокие прожилки создают эффект свежесобранной лесной шишки. Запах лёгкий, без отдушек, чтобы не перебивать аромат дома.',
     price: 1920,
     image: './foto/Свечка Шышка.jpeg'
   },
@@ -17,6 +19,7 @@ const PRODUCTS = [
     id: 'spotlight',
     name: 'Свечка прожектор',
     desc: 'Яркий свет и глубокие тени, как в театре',
+    details: 'Свеча быстро заполняет комнату тёплым светом и создаёт динамичную игру теней. Корпус выдержан в минималистичном стиле и подходит для современных интерьеров.',
     price: 2140,
     image: './foto/Свечка Прожектор.jpeg'
   },
@@ -24,6 +27,7 @@ const PRODUCTS = [
     id: 'horse-red',
     name: 'Свечка конь — красный',
     desc: 'Глянцевая поверхность и насыщенный цвет',
+    details: 'Форма коня символизирует движение и удачу. Красный оттенок достигается безопасными красителями, а поверхность покрыта защитным восковым слоем.',
     price: 1760,
     image: './foto/Красная лошадка.jpeg'
   },
@@ -31,6 +35,7 @@ const PRODUCTS = [
     id: 'horse-white',
     name: 'Свечка конь — белый',
     desc: 'Кремовая свеча с изысканными линиями',
+    details: 'Нежный молочный цвет подчёркивает фактуру гривы. Свеча хорошо смотрится в подарочных наборах и не оставляет следов при правильном использовании.',
     price: 1760,
     image: './foto/Белая лошадка.jpeg'
   },
@@ -38,6 +43,7 @@ const PRODUCTS = [
     id: 'ball-gold',
     name: 'Шар золотой',
     desc: 'Металлический блеск и зеркальная гладь',
+    details: 'Шар обкатывается вручную, поэтому поверхность получается идеально гладкой. Шикарно отражает гирлянды и праздничный свет.',
     price: 1980,
     image: './foto/Золотой шар.jpeg'
   },
@@ -45,6 +51,7 @@ const PRODUCTS = [
     id: 'ball-silver',
     name: 'Шар серебряный',
     desc: 'Серебристая пыль и яркое сияние',
+    details: 'Холодный металлический оттенок даёт аккуратный блеск даже без огня. Хорошо дружит с белыми и голубыми декорациями.',
     price: 1980,
     image: './foto/Серебренный шар.jpeg'
   },
@@ -52,6 +59,7 @@ const PRODUCTS = [
     id: 'ball-ribbed',
     name: 'Шар ребристый',
     desc: 'Объемная фактура с ручными вмятинами',
+    details: 'Каждая вмятина создаётся мастером вручную, поэтому поверхность получается живой и уникальной. Отлично подчёркивает минималистичные композиции.',
     price: 2160,
     image: './foto/Ребреистый шар .jpeg'
   },
@@ -59,12 +67,15 @@ const PRODUCTS = [
     id: 'set-classic',
     name: 'Набор свечей',
     desc: 'Готовая композиция для уютного вечера',
+    details: 'В набор входит несколько форм и цветов, подобранных так, чтобы их можно было комбинировать на столе. Удобный вариант для подарка или быстрого декора.',
     price: 5200,
     image: './foto/Набор.jpeg'
   }
 ];
 
 const cart = new Map();
+const CART_STORAGE_KEY = 'twentyTwoFloorCart';
+const supportsStorage = typeof window !== 'undefined' && 'localStorage' in window;
 const productListEl = document.getElementById('product-list');
 const cartItemsEl = document.getElementById('cart-items');
 const cartSummaryEl = document.getElementById('cart-summary');
@@ -72,6 +83,13 @@ const cartCheckoutBtn = document.getElementById('cart-checkout');
 const cartSectionEl = document.getElementById('cart-section');
 const floatingCartButton = document.getElementById('floating-cart');
 const floatingCartCount = document.getElementById('floating-cart-count');
+const productModalEl = document.getElementById('product-modal');
+const productModalImage = document.getElementById('product-modal-image');
+const productModalTitle = document.getElementById('product-modal-title');
+const productModalDesc = document.getElementById('product-modal-desc');
+const productModalDetails = document.getElementById('product-modal-details');
+const productModalPrice = document.getElementById('product-modal-price');
+const productModalAddBtn = document.getElementById('product-modal-add');
 const heroCta = document.getElementById('hero-cta');
 const catalogSection = document.getElementById('catalog');
 const featuresTrack = document.getElementById('features-track');
@@ -80,6 +98,7 @@ const mobileCartButton = document.getElementById('mobile-cart-button');
 const mobileCartCount = document.getElementById('mobile-cart-count');
 const TELEGRAM_LINK = 'https://t.me/ksenia_timofeevaa';
 const heroEmbers = document.getElementById('hero-embers');
+let activeProductId = null;
 
 function formatPrice(value) {
   return `${value.toLocaleString('ru-RU')} ₽`;
@@ -88,7 +107,7 @@ function formatPrice(value) {
 function renderProducts() {
   productListEl.innerHTML = PRODUCTS.map((product) => {
     return `
-      <article class="card">
+      <article class="card" data-product-card="${product.id}">
         <img class="card__media" src="${product.image}" alt="${product.name}" loading="lazy" />
         <div class="card__body">
           <h3 class="card__title">${product.name}</h3>
@@ -159,6 +178,7 @@ function changeItem(id, delta) {
   }
 
   updateCart();
+  persistCart();
 }
 
 function buildTelegramMessage() {
@@ -208,9 +228,15 @@ function scrollFeatures(direction) {
 }
 
 productListEl.addEventListener('click', (event) => {
-  const target = event.target;
-  if (target.matches('[data-add]')) {
-    changeItem(target.dataset.add, 1);
+  const addButton = event.target.closest('[data-add]');
+  if (addButton) {
+    changeItem(addButton.dataset.add, 1);
+    return;
+  }
+
+  const card = event.target.closest('[data-product-card]');
+  if (card) {
+    openProductModal(card.dataset.productCard);
   }
 });
 
@@ -220,6 +246,38 @@ cartItemsEl.addEventListener('click', (event) => {
   const delta = target.dataset.action === 'increase' ? 1 : -1;
   changeItem(target.dataset.id, delta);
 });
+
+function persistCart() {
+  if (!supportsStorage) return;
+  try {
+    const payload = Array.from(cart.values()).map((item) => ({
+      id: item.id,
+      count: item.count
+    }));
+    window.localStorage.setItem(CART_STORAGE_KEY, JSON.stringify(payload));
+  } catch (error) {
+    console.warn('Не удалось сохранить корзину', error);
+  }
+}
+
+function restoreCart() {
+  if (!supportsStorage) return;
+  try {
+    const stored = window.localStorage.getItem(CART_STORAGE_KEY);
+    if (!stored) return;
+    const parsed = JSON.parse(stored);
+    if (!Array.isArray(parsed)) return;
+    parsed.forEach(({ id, count }) => {
+      const product = PRODUCTS.find((item) => item.id === id);
+      if (!product) return;
+      const safeCount = Number(count);
+      if (!Number.isFinite(safeCount) || safeCount <= 0) return;
+      cart.set(id, { ...product, count: safeCount });
+    });
+  } catch (error) {
+    console.warn('Не удалось восстановить корзину', error);
+  }
+}
 
 cartCheckoutBtn.addEventListener('click', openTelegram);
 heroCta?.addEventListener('click', scrollToCatalog);
@@ -231,9 +289,27 @@ featureArrowButtons.forEach((button) => {
   });
 });
 
+productModalEl?.querySelectorAll('[data-modal-close]').forEach((trigger) => {
+  trigger.addEventListener('click', closeProductModal);
+});
+
+productModalAddBtn?.addEventListener('click', () => {
+  if (!activeProductId) return;
+  changeItem(activeProductId, 1);
+  closeProductModal();
+});
+
+window.addEventListener('keydown', (event) => {
+  if (event.key === 'Escape') {
+    closeProductModal();
+  }
+});
+
 renderProducts();
+restoreCart();
 updateCart();
 initHeroEmbers();
+syncModalWithStorage();
 
 function initHeroEmbers() {
   if (!heroEmbers) return;
@@ -259,4 +335,40 @@ function initHeroEmbers() {
   }
 
   setInterval(spawnEmber, 220);
+}
+
+function openProductModal(productId) {
+  if (!productModalEl) return;
+  const product = PRODUCTS.find((item) => item.id === productId);
+  if (!product) return;
+
+  activeProductId = productId;
+  if (productModalImage) {
+    productModalImage.src = product.image;
+    productModalImage.alt = product.name;
+  }
+  if (productModalTitle) productModalTitle.textContent = product.name;
+  if (productModalDesc) productModalDesc.textContent = product.desc;
+  if (productModalDetails) productModalDetails.textContent = product.details ?? '';
+  if (productModalPrice) productModalPrice.textContent = formatPrice(product.price);
+
+  productModalEl.classList.add('is-visible');
+  document.body.classList.add('is-locked');
+}
+
+function closeProductModal() {
+  if (!productModalEl) return;
+  productModalEl.classList.remove('is-visible');
+  document.body.classList.remove('is-locked');
+  activeProductId = null;
+}
+
+function syncModalWithStorage() {
+  // touch localStorage to ensure permissions before modal usage
+  if (!supportsStorage) return;
+  try {
+    window.localStorage.getItem(CART_STORAGE_KEY);
+  } catch (error) {
+    console.warn('Не удалось обратиться к localStorage', error);
+  }
 }
