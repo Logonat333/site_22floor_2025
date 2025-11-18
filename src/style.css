@@ -362,6 +362,14 @@ section.catalog {
   flex-direction: column;
   opacity: 0;
   animation: popScale 0.7s ease forwards;
+  transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.35s ease;
+  cursor: pointer;
+}
+
+.card:hover,
+.card:focus-within {
+  transform: translateY(-10px) scale(1.05);
+  box-shadow: 0 40px 60px rgba(0, 0, 0, 0.18);
 }
 
 .products__grid .card:nth-child(1) { animation-delay: 0.05s; }
@@ -379,6 +387,12 @@ section.catalog {
   height: 260px;
   object-fit: cover;
   background: #f2f0eb;
+  transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.card:hover .card__media,
+.card:focus-within .card__media {
+  transform: scale(1.08);
 }
 
 .card__body {
