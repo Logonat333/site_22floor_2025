@@ -1,5 +1,6 @@
 User-agent: *
 Allow: /
+Allow: /referral.html
 
 Sitemap: https://22floor.ru/sitemap.xml
-Host: https://22floor.ru
+Host: 22floor.ru
