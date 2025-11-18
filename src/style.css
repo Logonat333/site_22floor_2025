@@ -68,6 +68,16 @@ body.is-locked {
   background: var(--background);
 }
 
+.icon {
+  --icon-size: 20px;
+  width: var(--icon-size);
+  height: var(--icon-size);
+  display: inline-block;
+  vertical-align: middle;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
 .top-bar {
   position: sticky;
   top: 0;
@@ -152,10 +162,18 @@ body.is-locked {
   color: white;
   text-decoration: none;
   transition: opacity 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
 }
 
 .top-bar__nav a:hover {
   opacity: 0.8;
+}
+
+.nav-link__icon {
+  --icon-size: 18px;
+  opacity: 0.85;
 }
 
 .hero {
@@ -635,10 +653,14 @@ section.catalog {
   border-radius: 50%;
   background: var(--cream);
   color: var(--deep-red);
-  display: grid;
-  place-items: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   margin: 0 auto 16px;
-  font-size: 28px;
+}
+
+.feature__icon .icon {
+  --icon-size: 30px;
 }
 
 .feature h4 {
@@ -844,10 +866,14 @@ section.catalog {
   border-radius: 20px;
   background: var(--red);
   color: #fff;
-  display: grid;
-  place-items: center;
-  font-size: 26px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   margin-bottom: 18px;
+}
+
+.referral-steps__icon .icon {
+  --icon-size: 28px;
 }
 
 .referral-code {
@@ -960,10 +986,14 @@ section.catalog {
   border-radius: 50%;
   background: #fff;
   color: var(--deep-red);
-  display: grid;
-  place-items: center;
-  font-size: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   margin: 0 auto 18px;
+}
+
+.referral-benefits__icon .icon {
+  --icon-size: 30px;
 }
 
 .referral-benefits__item h3 {
@@ -1163,7 +1193,7 @@ section.catalog {
 }
 
 .mobile-nav__icon {
-  font-size: 20px;
+  --icon-size: 22px;
 }
 
 .site-footer {
@@ -1205,8 +1235,8 @@ section.catalog {
 }
 
 .footer__icon {
-  color: var(--yellow);
   margin-right: 10px;
+  --icon-size: 18px;
 }
 
 .footer__col a {

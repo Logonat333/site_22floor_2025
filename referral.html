@@ -22,9 +22,18 @@
         <a href="index.html#top">22 Floor</a>
       </div>
       <nav class="top-bar__nav">
-        <a href="index.html#top">Главная</a>
-        <a href="index.html#catalog">Каталог</a>
-        <a href="referral.html">Скидка 30%</a>
+        <a href="index.html#top">
+          <img class="nav-link__icon icon" src="src/главная.svg" alt="" aria-hidden="true" />
+          Главная
+        </a>
+        <a href="index.html#catalog">
+          <img class="nav-link__icon icon" src="src/каталог.svg" alt="" aria-hidden="true" />
+          Каталог
+        </a>
+        <a href="referral.html">
+          <img class="nav-link__icon icon" src="src/скидка30.svg" alt="" aria-hidden="true" />
+          Скидка 30%
+        </a>
       </nav>
       <button class="top-bar__cart-button" id="mobile-cart-button" type="button" aria-label="Открыть корзину">
         <span class="top-bar__cart-icon" aria-hidden="true"></span>
@@ -38,8 +47,7 @@
           <p class="referral-hero__eyebrow">30% скидка себе и друзьям</p>
           <h1>Реферальная программа</h1>
           <p>
-            Пригласите друзей до оформления заказа и получите 30% скидку каждый. Поделитесь кодом, а мы позаботимся
-            об остальном.
+            Пригласите друзей  и получите 30% скидку каждый.
           </p>
           <div class="referral-hero__cta-row">
             <a class="referral-hero__cta" href="#referral-code">Получить код</a>
@@ -51,17 +59,23 @@
         <h2>Как это работает?</h2>
         <div class="referral-steps__grid">
           <article class="referral-steps__card">
-            <div class="referral-steps__icon">🔗</div>
+            <div class="referral-steps__icon" aria-hidden="true">
+              <img class="icon" src="src/поделись.svg" alt="" loading="lazy" />
+            </div>
             <h3>1. Поделись кодом</h3>
-            <p>Отправь свой код другу в Telegram или любом мессенджере до оформления заказа.</p>
+            <p>Отправь свой код другу в Telegram или любом мессенджере.</p>
           </article>
           <article class="referral-steps__card">
-            <div class="referral-steps__icon">🛒</div>
+            <div class="referral-steps__icon" aria-hidden="true">
+              <img class="icon" src="src/заказ.svg" alt="" loading="lazy" />
+            </div>
             <h3>2. Друг делает заказ</h3>
-            <p>При оформлении он вводит твою ссылку или код и получает скидку 30%.</p>
+            <p>При оформлении он указывает код и получает скидку 30%.</p>
           </article>
           <article class="referral-steps__card">
-            <div class="referral-steps__icon">🎉</div>
+            <div class="referral-steps__icon" aria-hidden="true">
+              <img class="icon" src="src/скидка.svg" alt="" loading="lazy" />
+            </div>
             <h3>3. Получаешь скидку</h3>
             <p>Ты получаешь такую же скидку 30% на свой следующий заказ. Все довольны!</p>
           </article>
@@ -76,7 +90,7 @@
             <button type="button" id="referral-copy">Копировать</button>
           </div>
           <button class="referral-code__share" type="button" id="referral-share">Поделиться в Telegram</button>
-          <p class="referral-code__hint">Поделись до оформления заказа и получи 30% скидку после подтверждения.</p>
+          <p class="referral-code__hint">Поделись кодом и получите 30% скидку каждый.</p>
           <p class="referral-code__status" id="referral-code-status" aria-live="polite"></p>
         </div>
       </section>
@@ -85,22 +99,30 @@
         <h2>Преимущества программы</h2>
         <div class="referral-benefits__grid">
           <article class="referral-benefits__item">
-            <div class="referral-benefits__icon">∞</div>
+            <div class="referral-benefits__icon" aria-hidden="true">
+              <img class="icon" src="src/неограничено.svg" alt="" loading="lazy" />
+            </div>
             <h3>Неограниченно</h3>
             <p>Приглашай сколько угодно друзей и получай скидку за каждого.</p>
           </article>
           <article class="referral-benefits__item">
-            <div class="referral-benefits__icon">⏱</div>
+            <div class="referral-benefits__icon" aria-hidden="true">
+              <img class="icon" src="src/без_срока.svg" alt="" loading="lazy" />
+            </div>
             <h3>Без срока</h3>
             <p>Код действует всегда — твой бонус можно использовать в любое время.</p>
           </article>
           <article class="referral-benefits__item">
-            <div class="referral-benefits__icon">🤝</div>
+            <div class="referral-benefits__icon" aria-hidden="true">
+              <img class="icon" src="src/выгодно_всем.svg" alt="" loading="lazy" />
+            </div>
             <h3>Выгодно всем</h3>
             <p>И ты, и твой друг получаете одинаковую скидку 30%.</p>
           </article>
           <article class="referral-benefits__item">
-            <div class="referral-benefits__icon">⚡</div>
+            <div class="referral-benefits__icon" aria-hidden="true">
+              <img class="icon" src="src/быстро.svg" alt="" loading="lazy" />
+            </div>
             <h3>Быстро</h3>
             <p>Никаких сложностей — отправь код и наслаждайся выгодой.</p>
           </article>
@@ -123,9 +145,18 @@
           </div>
           <div class="footer__col">
             <h4>Контакты</h4>
-            <p><span class="footer__icon">👤</span> ИП Тимофеева Ксения Евгеньевна</p>
-            <p><span class="footer__icon">📞</span> <a href="tel:+79637682268">+7 963 768‑22‑68</a></p>
-            <p><span class="footer__icon">✈️</span> <a href="https://t.me/ksenia_timofeevaa" target="_blank" rel="noopener">@ksenia_timofeevaa</a></p>
+            <p>
+              <img class="footer__icon icon" src="src/ИП.svg" alt="" aria-hidden="true" />
+              ИП Тимофеева Ксения Евгеньевна
+            </p>
+            <p>
+              <img class="footer__icon icon" src="src/телефон.svg" alt="" aria-hidden="true" />
+              <a href="tel:+79637682268">+7 963 768‑22‑68</a>
+            </p>
+            <p>
+              <img class="footer__icon icon" src="src/телеграм.svg" alt="" aria-hidden="true" />
+              <a href="https://t.me/ksenia_timofeevaa" target="_blank" rel="noopener">@ksenia_timofeevaa</a>
+            </p>
           </div>
           <div class="footer__col">
             <h4>Реквизиты</h4>
@@ -147,15 +178,15 @@
   </div>
   <nav class="mobile-nav" aria-label="Навигация по сайту">
     <a class="mobile-nav__item" href="index.html#top">
-      <span class="mobile-nav__icon">🏠</span>
+      <img class="mobile-nav__icon icon" src="src/главная.svg" alt="" aria-hidden="true" />
       <span>Главная</span>
     </a>
     <a class="mobile-nav__item" href="index.html#catalog">
-      <span class="mobile-nav__icon">🔥</span>
+      <img class="mobile-nav__icon icon" src="src/каталог.svg" alt="" aria-hidden="true" />
       <span>Каталог</span>
     </a>
     <a class="mobile-nav__item" href="referral.html">
-      <span class="mobile-nav__icon">🎁</span>
+      <img class="mobile-nav__icon icon" src="src/скидка30.svg" alt="" aria-hidden="true" />
       <span>Скидка 30%</span>
     </a>
   </nav>
