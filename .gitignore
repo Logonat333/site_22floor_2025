@@ -1,2 +1,50 @@
+# Project-local exclusions
 /0195ec34dca89dc6d4541ddb2aa8bf58.jpg
-/foto
+/foto/
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Environments and secrets
+.env
+.env.*
+!.env.example
+*.pem
+*.p12
+*.pfx
+*.key
+id_rsa
+id_ed25519
+*credentials*
+*creds*
+
+# Logs and reports
+*.log
+logs/
+reports/
+feedback/
+
+# Dependency and build artifacts
+node_modules/
+venv/
+.venv/
+site-packages/
+__pycache__/
+dist/
+build/
+coverage/
+.cache/
+
+# Local databases and dumps
+*.sqlite
+*.sqlite3
+*.db
+*.sql
+*.dump
+*.bak
+*.tmp
